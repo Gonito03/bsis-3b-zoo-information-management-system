@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Pages\Role;
+namespace App\Livewire\Pages\Admin\Role;
 
 use Livewire\Attributes\Computed;
 use Livewire\Component;
@@ -22,6 +22,6 @@ class ViewRole extends Component
     public function render()
     {
         
-        return view('livewire.pages.role.view-role');
+        return view('livewire.pages.admin.role.view-role');
     }
 }
