@@ -1,43 +1,40 @@
 <?php
 
-namespace App\Livewire\Pages\Role;
+namespace App\Livewire\Pages\Admin\Role;
 
 use Illuminate\Support\Str;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class EdithRole extends Component
+class CreateRole extends Component
 {
     public $name;
-
-    public Role $role;
 
     public $permissions = [];
 
     public $selectedPermissions = [];
 
     // load permissions in mount
-    // add a role $role id for redirect in selected role and edith it
-    public function mount(Role $role)
+    public function mount()     
     {
-        $this->role = $role;
-        $this->name = $role->name;
-        $this->selectedPermissions = $role->permissions->pluck('name')->toArray();
         // load only id and name to minimize payload
         $this->permissions = Permission::select('id', 'name')->get();
     }
 
-    // validation of data for role
+    // validation of data from the user input/from model binding
     public function rules()
     {
         return [
-            'name' => 'required|string|min:3|unique:roles,name,'.$this->role->id, // this will allow h role name to accept even it exist for the unique validation
+            'name' => 'required|string|min:3|unique:roles,name',
+
             'selectedPermissions' => 'required|array|min:1',
+            
             'selectedPermissions.*' => 'exists:permissions,name',
         ];
     }
-
+    // validation messages
     public function messages()
     {
         return [
@@ -59,12 +56,12 @@ class EdithRole extends Component
         // 1. create role
         // error is the name is wrong it right in nyme instead of name
         // and the role is not importetd
-        $this->role->update([
+        $role = Role::create([
             'name' => $roleName,
         ]);
 
-        // 2. sync permissions
-        $this->role->syncPermissions($this->selectedPermissions);
+        // 2. sync permissions 
+        $role->syncPermissions($this->selectedPermissions);
 
         session()->flash('success', 'Role created successfully.');
 
@@ -72,9 +69,11 @@ class EdithRole extends Component
             'name', 'selectedPermissions',
         ]);
     }
+
+
+    #[Layout('components.layouts.admin')]
     public function render()
     {
-       
-        return view('livewire.pages.role.edith-role');
+        return view('livewire.pages.admin.role.create-role');
     }
 }
