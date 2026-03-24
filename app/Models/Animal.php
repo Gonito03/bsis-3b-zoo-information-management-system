@@ -16,6 +16,7 @@ class Animal extends Model
         'category_id',
         'need_id',
         'description',
+        'image',
     ];
 
     public function species()
