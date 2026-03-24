@@ -16,6 +16,7 @@ use App\Livewire\Pages\Admin\User\IndexUser;
 use App\Livewire\Pages\Auth\Login;
 use App\Livewire\Pages\Auth\Register;
 use App\Livewire\Pages\Public\About;
+use App\Livewire\Pages\Public\AnimalSingle;
 use App\Livewire\Pages\Public\Index;
 use App\Models\Animal;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', Index::class)->name('home');
 Route::get('/about', About::class)->name('about');
+Route::get('/animals/{id}', AnimalSingle::class)->name('animal.single');
 Route::get('/login', Login::class)->name('login.page');
 Route::get('/register', Register::class)->name('register.page');
 
@@ -43,7 +45,7 @@ Route::get('/register', Register::class)->name('register.page');
 
 
 Route::prefix('admin')
-->middleware('role:admin')
+// ->middleware('role:admin')
 ->group(function()
 {
     Route::get('/dashboard', Dashboard::class)->name('admin.dashboard');
