@@ -1,5 +1,5 @@
 <div>
-  <!-- ========== HEADER ========== -->
+
 <!-- ========== HEADER ========== -->
 <header class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm">
   <nav class="mt-4 relative max-w-2xl w-full bg-navbar border border-navbar-line rounded rounded-[24px] mx-2 flex flex-wrap md:flex-nowrap items-center justify-between p-1 ps-4 md:py-0 sm:mx-auto">
