@@ -82,7 +82,6 @@ Route::prefix('admin')
     Route::get('/history/user', HistoryUser::class)->name('admin.history.user');
 
 });
-});
 
 Route::prefix('zookeeper')
 ->middleware(['auth', 'role:zookeeper'])
