@@ -81,7 +81,6 @@ Route::prefix('admin')
     Route::get('/history/user', HistoryUser::class)->name('admin.history.user');
 
 });
-});
 
 Route::prefix('zookeeper')
 ->middleware(['auth', 'role:zookeeper'])
@@ -91,6 +90,6 @@ Route::prefix('zookeeper')
 
     Route::get('/animal',zookeeperanimal::class)->name('zookeeper.animal');
 
-    Route::get('/post',ZookeeperIndexPost::class)->name('zookeeper.post')
+    Route::get('/post',ZookeeperIndexPost::class)->name('zookeeper.post');
 
 });

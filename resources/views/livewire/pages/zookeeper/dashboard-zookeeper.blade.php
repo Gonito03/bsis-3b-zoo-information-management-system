@@ -3,7 +3,7 @@
         <!-- Card Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             @forelse ($this->animals as $akey => $animal)
-                <div wire:click="viewAnimal({{ $akey }})">
+                <div wire:click="animal({{ $akey }})">
                     <!-- Card -->
                     <div class="group flex flex-col">
                         <div class="relative">
@@ -21,9 +21,6 @@
                                     {{ $animal->species->species_name ?? 'Unknown Species' }}
                                 </p>
                             </div>
-
-                            <a wire:key="{{ $akey }}" class="after:absolute after:inset-0 after:z-1"
-                                href="#"></a>
                         </div>
 
                         <div class="mb-2 mt-4 text-sm">
@@ -81,7 +78,7 @@
 
                                         <div class="text-end">
                                             <span
-                                                class="text-foreground">{{ Str::limit($animal->description, 30) ?? 'N/A' }}</span>
+                                                class="text-foreground">{{ Str::limit($animal->description, 10) ?? 'N/A' }}</span>
                                         </div>
                                     </div>
                                 </div>

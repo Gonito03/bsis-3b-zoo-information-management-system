@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Admin\History;
 
 use App\Models\Animal;
+use App\Models\Post;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -22,6 +23,7 @@ class HistoryAnimal extends Component
     public function restore($id)
     {
         Animal::withTrashed()->findOrFail($id)->restore();
+        Post::withTrashed()->where('animal_id', $id)->restore();
     }
     #[Layout('components.layouts.admin')]
     public function render()

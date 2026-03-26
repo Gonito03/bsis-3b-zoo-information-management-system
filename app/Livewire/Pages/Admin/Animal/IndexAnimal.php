@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Admin\Animal;
 
 use App\Models\Animal;
+use App\Models\Post;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -10,7 +11,7 @@ use Livewire\Component;
 class IndexAnimal extends Component
 {
     public $animal;
-
+    public $post;
     
 
     #[Computed()]
@@ -29,7 +30,9 @@ class IndexAnimal extends Component
     public function delete($id)
     {
         $animal = Animal::findOrFail($id);
+        $post = Post::findOrFail($id)->first();
         $animal->delete();
+        $post->delete();
         // this will delete the animal from the database
     }
 

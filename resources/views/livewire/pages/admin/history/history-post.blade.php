@@ -117,7 +117,7 @@
                                         </td>
                                         <td class="size-px whitespace-nowrap">
                                             <div class="px-6 py-1.5">
-                                                <a wire:click="restore({{ $animal->id }})" href="#"
+                                                <a wire:click="restore({{ $post->id }})" href="#"
                                                     class="text-green-600 hover:text-green-700 focus:outline-hidden focus:text-green-700 disabled:opacity-50 disabled:pointer-events-none">
                                                     Restore
                                                 </a>
