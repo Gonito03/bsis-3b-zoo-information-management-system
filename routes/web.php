@@ -4,6 +4,9 @@ use App\Livewire\Pages\Admin\Animal\CreateAnimal;
 use App\Livewire\Pages\Admin\Animal\EditAnimal;
 use App\Livewire\Pages\Admin\Animal\IndexAnimal;
 use App\Livewire\Pages\Admin\DashboardAdmin;
+use App\Livewire\Pages\Admin\History\HistoryAnimal;
+use App\Livewire\Pages\Admin\History\HistoryPost;
+use App\Livewire\Pages\Admin\History\HistoryUser;
 use App\Livewire\Pages\Admin\Post\CreatePost;
 use App\Livewire\Pages\Admin\Post\EditPost;
 use App\Livewire\Pages\Admin\Post\IndexPost;
@@ -74,6 +77,11 @@ Route::prefix('admin')
     Route::get('/users/create', CreateUser::class)->name('admin.user.create');
     Route::get('/users/{id}', EditUser::class)->name('admin.user.edit');
 
+    Route::get('/history/animal', HistoryAnimal::class)->name('admin.history.animal');
+    Route::get('/history/post', HistoryPost::class)->name('admin.history.post');
+    Route::get('/history/user', HistoryUser::class)->name('admin.history.user');
+
+});
 });
 
 Route::prefix('zookeeper')
