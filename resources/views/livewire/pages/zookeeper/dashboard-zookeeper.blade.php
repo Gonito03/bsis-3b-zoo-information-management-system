@@ -3,7 +3,7 @@
         <!-- Card Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             @forelse ($this->animals as $akey => $animal)
-                <div wire:click="animal({{ $akey }})">
+                <div wire:click="animal-({{ $akey }})">
                     <!-- Card -->
                     <div class="group flex flex-col">
                         <div class="relative">
@@ -17,10 +17,11 @@
                                     {{ $animal->name }}
                                 </h3>
 
-                                <p class="mt-2 font-semibold text-foreground">
-                                    {{ $animal->species->species_name ?? 'Unknown Species' }}
+                                <p class="gap mt-2 font-semibold text-foreground">
+                                    {{ $animal->species->species_name ?? 'Unknown Species' }} | {{ Str::ucfirst($animal->gender) ?? $animal->gender }} | {{ $animal->year_age }} Yr/s | {{ $animal->month_age }} Mth/s
                                 </p>
                             </div>
+
                         </div>
 
                         <div class="mb-2 mt-4 text-sm">
@@ -48,7 +49,7 @@
                                         </div>
 
                                         <div class="text-end">
-                                            <span class="text-foreground">{{ $animal->height ?? 'N/A' }} m</span>
+                                            <span class="text-foreground">{{ $animal->height ?? 'N/A' }} cm</span>
                                         </div>
                                     </div>
                                 </div>

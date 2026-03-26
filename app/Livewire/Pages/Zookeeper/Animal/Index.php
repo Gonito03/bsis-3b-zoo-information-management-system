@@ -8,15 +8,16 @@ use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Index extends Component
-{public $animal;
-
+{
+   public $animal;
+    public $post;
     
 
     #[Computed()]
     public function animals()
     {
         return Animal::query()
-            ->select('id', 'name', 'species_id', 'age', 'weight', 'height', 'habitat_id', 'category_id', 'description', 'image')
+            ->select('id', 'name', 'species_id', 'year_age', 'month_age', 'gender', 'weight', 'height', 'habitat_id', 'category_id', 'description', 'image')
             ->with('species:id,species_name,species_desc', 'habitat:id,hab_name,hab_desc,hab_temp', 'category:id,cat_name,cat_desc', 'needs:id,food_name,animal_needs')
             ->orderBy('created_at', 'desc')
             ->get();
@@ -24,6 +25,8 @@ class Index extends Component
         // we are selecting the name, species_id, age, weight, height, habitat_id, category_id and description fields from the animals table, 
         // and we are returning all the animals in the database, so we can display them in the view.
     }
+
+    
 
     #[Layout('components.layouts.zookeeper')]
     public function render()
